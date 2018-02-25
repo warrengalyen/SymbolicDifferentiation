@@ -239,7 +239,7 @@ int CalculateStack(std::vector<ExpressionItem*>& vStack, int& nExpression, CStri
 	else
 	{
 		// get Expression calculation
-		if (nError = pQI->GetCalculation(false) < 0)
+		if ((nError = pQI->GetCalculation(false)) < 0)
 		{
 			sOutput = GetErrorMessage(nError);
 			return nError;

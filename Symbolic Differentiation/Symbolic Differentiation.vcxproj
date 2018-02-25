@@ -107,6 +107,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Calculate.cpp" />
+    <ClCompile Include="Curve.cpp" />
     <ClCompile Include="Differentiate.cpp" />
     <ClCompile Include="MathStack.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -117,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Calculate.h" />
+    <ClInclude Include="Curve.h" />
     <ClInclude Include="Differentiate.h" />
     <ClInclude Include="MathStack.h" />
     <ClInclude Include="Resource.h" />
@@ -133,7 +135,6 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Manifest Include="..\..\..\..\Desktop\symdiff\RES\Symbolic Differentiation.manifest" />
     <Manifest Include="res\Symbolic Differentiation.manifest" />
   </ItemGroup>
   <ItemGroup>

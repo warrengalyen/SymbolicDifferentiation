@@ -33,6 +33,9 @@
     <ClInclude Include="Calculate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Curve.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -50,6 +53,9 @@
     <ClCompile Include="Calculate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Curve.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Symbolic Differentiation.rc">
@@ -58,9 +64,6 @@
   </ItemGroup>
   <ItemGroup>
     <Manifest Include="res\Symbolic Differentiation.manifest" />
-    <Manifest Include="..\..\..\..\Desktop\symdiff\RES\Symbolic Differentiation.manifest">
-      <Filter>Resource Files</Filter>
-    </Manifest>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\Symbolic Differentiation.rc2">
