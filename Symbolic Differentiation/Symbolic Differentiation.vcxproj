@@ -106,6 +106,8 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Calculate.cpp" />
+    <ClCompile Include="Differentiate.cpp" />
     <ClCompile Include="MathStack.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -114,6 +116,8 @@
     <ClCompile Include="Symbolic Differentiation.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Calculate.h" />
+    <ClInclude Include="Differentiate.h" />
     <ClInclude Include="MathStack.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />

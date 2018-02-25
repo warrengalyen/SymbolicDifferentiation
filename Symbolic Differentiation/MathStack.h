@@ -9,6 +9,7 @@ bool IsNumeric(LPCSTR lpcstr);
 CString TrimFloat(double f);
 void OptimizeSign(CString& str);
 void Optimize(CString& str);
+void InsertTabs(CString& str);
 char *GetClose(char *p);
 int GetFunction(LPCSTR pOpen);
 int GetOperator(IN LPCSTR lpcstr, IN LPCSTR lpcstrOperators[]);

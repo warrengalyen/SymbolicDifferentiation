@@ -27,6 +27,12 @@
     <ClInclude Include="Symbolic Differentiation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Differentiate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Calculate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -36,6 +42,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Symbolic Differentiation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Differentiate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Calculate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
