@@ -18,10 +18,10 @@
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="targetver.h">
+    <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
+    <ClInclude Include="MathStack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Symbolic Differentiation.h">
@@ -30,6 +30,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MathStack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Symbolic Differentiation.cpp">
@@ -42,10 +45,21 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="small.ico">
+    <Manifest Include="res\Symbolic Differentiation.manifest" />
+    <Manifest Include="..\..\..\..\Desktop\symdiff\RES\Symbolic Differentiation.manifest">
       <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Symbolic Differentiation.ico">
+    </Manifest>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Symbolic Differentiation.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\Symbolic Differentiation.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
