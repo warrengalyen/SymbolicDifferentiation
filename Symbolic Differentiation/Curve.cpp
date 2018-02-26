@@ -1,6 +1,9 @@
+// Curve.cpp : implementation file
+
 #include "stdafx.h"
 #include "Symbolic Differentiation.h"
 #include "Curve.h"
+#include "OptionsDialog.h"
 
 IMPLEMENT_DYNAMIC(CCurve, CWnd)
 CCurve::CCurve()
@@ -396,6 +399,18 @@ void CCurve::OnMenuClick(UINT nID)
 
 void CCurve::OnOptions()
 {
-	// TODO: Add options dialog
+	COptionsDialog dlg;
+	dlg.m_dMinX = m_dMinX;
+	dlg.m_dMaxX = m_dMaxX;
+	dlg.m_dMaxY = m_dMaxY;
+	dlg.m_bDrawLines = m_bDrawLines;
+	if (dlg.DoModal() == IDOK)
+	{
+		m_dMinX = dlg.m_dMinX;
+		m_dMaxX = dlg.m_dMaxX;
+		m_dMaxY = dlg.m_dMaxY;
+		m_bDrawLines = dlg.m_bDrawLines;
+		Invalidate();
+	}
 
 }
