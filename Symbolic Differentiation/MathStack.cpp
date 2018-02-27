@@ -49,6 +49,9 @@ char* pFunctions[] = {
 	NULL
 };
 
+/*
+ *  GetClose: saerch for the close parenthesis
+ */
 char *GetClose(char *p)
 {
 	// set parenthesis count to one
@@ -64,6 +67,9 @@ char *GetClose(char *p)
 	return NULL;
 }
 
+/*
+ *  GetFunction: Check if the initial input string matches any of the supprted functions
+ */
 int GetFunction(LPCSTR pOpen, int& nSign)
 {
 	LPSTR p = (LPSTR)pOpen;
@@ -84,25 +90,28 @@ int GetFunction(LPCSTR pOpen, int& nSign)
 	return -1;
 }
 
-bool IsRightSign(IN char c, IN LPCSTR lpcstrOperators[], IN int nIndex)
+bool IsRightSign(IN char c, IN LPCSTR lpcsOperators[], IN int nIndex)
 {
-	for (; lpcstrOperators[nIndex]; nIndex++)
+	for (; lpcsOperators[nIndex]; nIndex++)
 	{
-		if (strchr(lpcstrOperators[nIndex], c) != NULL)
+		if (strchr(lpcsOperators[nIndex], c) != NULL)
 			return false;
 	}
 	return true;
 }
 
-int GetOperator(IN LPCSTR lpcstr, IN LPCSTR lpcstrOperators[])
+/*
+ * GetOperator: scan the input string to search for any of the input operators
+ */
+int GetOperator(IN LPCSTR lpcs, IN LPCSTR lpcsOperators[])
 {
-	for (int nIndex = 0; lpcstrOperators[nIndex]; nIndex++)
+	for (int nIndex = 0; lpcsOperators[nIndex]; nIndex++)
 	{
 		int nOpen = 0;
 		// scan the expression from its end
-		LPSTR p = (LPSTR)lpcstr + strlen(lpcstr) - 1;
+		LPSTR p = (LPSTR)lpcs + strlen(lpcs) - 1;
 		// loop until start of expression
-		while (p >= lpcstr)
+		while (p >= lpcs)
 		{
 			// check for close
 			if (*p == ')')
@@ -111,12 +120,12 @@ int GetOperator(IN LPCSTR lpcstr, IN LPCSTR lpcstrOperators[])
 			else if (*p == '(')
 				nOpen--;
 			// check for operator
-			else if (nOpen == 0 && strchr(lpcstrOperators[nIndex], *p) != NULL)
+			else if (nOpen == 0 && strchr(lpcsOperators[nIndex], *p) != NULL)
 			{
 				// check if the operator is not a sign mark
-				if ((*p != '-' && *p != '+') || (p != lpcstr && IsRightSign(*(p - 1), lpcstrOperators, nIndex + 1)))
+				if ((*p != '-' && *p != '+') || (p != lpcs && IsRightSign(*(p - 1), lpcsOperators, nIndex + 1)))
 					// return operator index
-					return (int)(p - lpcstr);
+					return (int)(p - lpcs);
 			}
 			p--;
 		}
@@ -125,13 +134,13 @@ int GetOperator(IN LPCSTR lpcstr, IN LPCSTR lpcstrOperators[])
 	return -1;
 }
 
-int FillStack(LPCSTR lpcstrInput, std::vector<ExpressionItem*>& vStack)
+int FillStack(LPCSTR lpcsInput, std::vector<ExpressionItem*>& vStack)
 {
 	// operators array from high to low priority
-	LPCSTR lpcstrOperators[] = { "+-", "*/", "^%", NULL };
+	LPCSTR lpcsOperators[] = { "+-", "*/", "^%", NULL };
 
 	// insert first input into the stack
-	vStack.push_back(new ExpressionItem(lpcstrInput));
+	vStack.push_back(new ExpressionItem(lpcsInput));
 	// loop through the Expression stack to check if any expression can be divided into two queries
 	for (int nIndex = 0; nIndex < (int)vStack.size(); nIndex++)
 	{
@@ -141,7 +150,7 @@ int FillStack(LPCSTR lpcstrInput, std::vector<ExpressionItem*>& vStack)
 			// copy Expression string
 			CString str = vStack[nIndex]->m_sInput;
 			// parse expression to find operators
-			int nOpIndex = GetOperator(str, lpcstrOperators);
+			int nOpIndex = GetOperator(str, lpcsOperators);
 			if (nOpIndex != -1)
 			{
 				// split the Expression into two queries at the operator index
@@ -153,8 +162,7 @@ int FillStack(LPCSTR lpcstrInput, std::vector<ExpressionItem*>& vStack)
 			}
 			else // check if Expression string starts with a function or parenthesis
 			{
-				if ((vStack[nIndex]->m_nFunction = GetFunction(str, vStack[nIndex]->m_nSign)) == 0 && vStack[nIndex]->
-					m_nSign == 0)
+				if ((vStack[nIndex]->m_nFunction = GetFunction(str, vStack[nIndex]->m_nSign)) == 0 && vStack[nIndex]->m_nSign == 0)
 				{
 					// remove parenthesis and rescan the Expression
 					vStack[nIndex--]->m_sInput = str.Mid(1, str.GetLength() - 2);
@@ -271,9 +279,9 @@ CString TrimFloat(double f)
 	return str;
 }
 
-bool IsNumeric(LPCSTR lpcstr)
+bool IsNumeric(LPCSTR lpcs)
 {
-	char* p = (char*)lpcstr;
+	char* p = (char*)lpcs;
 	if (*p == '-' || *p == '+')
 		p++;
 	if (*p == 'e' && *(p + 1) == 0)

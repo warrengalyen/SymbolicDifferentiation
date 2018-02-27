@@ -1,10 +1,11 @@
 // Curve.cpp : implementation file
 
 #include "stdafx.h"
-#include "Symbolic Differentiation.h"
+#include "SymbolicDifferentiation.h"
 #include "Curve.h"
 #include "OptionsDialog.h"
 
+// CCurve
 IMPLEMENT_DYNAMIC(CCurve, CWnd)
 CCurve::CCurve()
 {
@@ -293,7 +294,7 @@ void CCurve::OnMouseMove(UINT nFlags, CPoint point)
 {
 	CClientDC dc(this);
 	dc.SetTextColor(COLOR_AXES);
-	dc.SetBkColor(TRANSPARENT);
+	dc.SetBkMode(TRANSPARENT);
 	CRect rect;
 	GetClientRect(&rect);
 	double x = XScreenToMath(point.x, rect, m_dMinX, m_dMaxX);

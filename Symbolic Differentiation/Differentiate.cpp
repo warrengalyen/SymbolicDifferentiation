@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "Differentiate.h"
 
+/*
+ * DifferentiateStack: takes the input stack and applies operators to operands 
+ */
 CString DifferentiateStack(std::vector<ExpressionItem*>& vStack, int& nExpression)
 {
 	ExpressionItem *pQI = vStack[nExpression++];
@@ -49,8 +52,10 @@ CString DifferentiateStack(std::vector<ExpressionItem*>& vStack, int& nExpressio
 				break;
 			case '/':	// d(u/v) = du/v
 				pQI->m_sOutput = '(' + du + ")/" + v;
+				break;
 			case '^':	// d(u^v) = v*u^(v-1)*du
 				pQI->m_sOutput.Format("%s*%s^%s*%s", v, u, TrimFloat(atof(v) - 1), du);
+				break;
 			}
 		}
 		else
@@ -82,9 +87,9 @@ CString DifferentiateStack(std::vector<ExpressionItem*>& vStack, int& nExpressio
 	return pQI->m_sOutput;
 }
 
-CString Differentiate(LPCSTR lpcstrInput, CString& sStack, bool bOptimize)
+CString Differentiate(LPCSTR lpcsInput, CString& sStack, bool bOptimize)
 {
-	CString sInput = lpcstrInput;
+	CString sInput = lpcsInput;
 	// remove spaces
 	sInput.Remove(' ');
 	// convert to lower case

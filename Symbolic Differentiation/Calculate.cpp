@@ -181,7 +181,7 @@ int CalculateStack(std::vector<ExpressionItem*>& vStack, int& nExpression, CStri
 		CString cu, cv;
 		// get left operand calculation
 		if ((nError = CalculateStack(vStack, nExpression, cu)) < 0)
-			nError;
+			return nError;
 		// get right operand calculation
 		if ((nError = CalculateStack(vStack, nExpression, cv)) < 0)
 			return nError;
@@ -302,9 +302,9 @@ int CalculateStack(std::vector<ExpressionItem*>& vStack, int& nExpression, doubl
 	return 0;
 }
 
-int Calculate(LPCSTR lpcstrInput, double& dOutput)
+int Calculate(LPCSTR lpcsInput, double& dOutput)
 {
-	CString sInput = lpcstrInput;
+	CString sInput = lpcsInput;
 	// remove spaces
 	sInput.Remove(' ');
 	// make lower case
@@ -326,9 +326,9 @@ int Calculate(LPCSTR lpcstrInput, double& dOutput)
 	return nError;
 }
 
-CString Calculate(LPCSTR lpcstrInput, CString& sStack, bool bOptimize)
+CString Calculate(LPCSTR lpcsInput, CString& sStack, bool bOptimize)
 {
-	CString sInput = lpcstrInput;
+	CString sInput = lpcsInput;
 	// remove spaces
 	sInput.Remove(' ');
 	// make all characters lower case

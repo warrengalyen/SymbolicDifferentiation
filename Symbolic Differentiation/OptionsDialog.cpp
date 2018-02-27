@@ -1,7 +1,7 @@
 // OptionsDialog.cpp : implementation file
 
 #include "stdafx.h"
-#include "Symbolic Differentiation.h"
+#include "SymbolicDifferentiation.h"
 #include "OptionsDialog.h"
 
 IMPLEMENT_DYNAMIC(COptionsDialog, CDialog)
